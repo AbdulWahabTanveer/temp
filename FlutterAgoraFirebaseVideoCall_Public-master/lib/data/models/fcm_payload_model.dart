@@ -7,14 +7,14 @@ class FcmPayloadModel{
   FcmPayloadModel.fromJson(Map<String,dynamic> json)
   {
     to = json['to'];
-    data = json['data'];
+    data = json['notification'];
   }
 
   Map<String,dynamic> toMap()
   {
     return {
       'to':to,
-      'data':data,
+      'notification':data,
     };
   }
 }
