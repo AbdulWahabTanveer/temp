@@ -25,7 +25,7 @@ class HomeScreenPageView extends StatelessWidget {
             return UserItemView(
               userModel: users[index],
               onCallTap: () {
-                if(!users[index].busy!){
+                if(!(users[index].busy ?? false)){
                   HomeCubit.get(context).fireVideoCall(
                       callModel: CallModel(
                           id: 'call_${UniqueKey().hashCode.toString()}',

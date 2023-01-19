@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:youtube/data/models/call_model.dart';
 import 'package:youtube/presentaion/cubit/call/call_cubit.dart';
@@ -82,24 +84,24 @@ class _CallScreenState extends State<CallScreen> {
         //Call States
         if(state is CallNoAnswerState){
           if(!widget.isReceiver){ //Caller
-            showToast(msg: 'No response!');
+            Get.snackbar("No response!", '');
           }
           Navigator.pop(context);
         }
         if(state is CallCancelState){
           if(widget.isReceiver){ //Receiver
-            showToast(msg: 'Caller cancel the call!');
+            Get.snackbar('Caller cancel the call!',"");
           }
           Navigator.pop(context);
         }
         if(state is CallRejectState){
           if(!widget.isReceiver){ //Caller
-            showToast(msg: 'Receiver reject the call!');
+            Get.snackbar('Receiver reject the call!',"");
           }
           Navigator.pop(context);
         }
         if(state is CallEndState){
-          showToast(msg: 'Call ended!');
+          Get.snackbar('Call ended!',"");
           Navigator.pop(context);
         }
       },
@@ -177,7 +179,7 @@ class _CallScreenState extends State<CallScreen> {
                                   child: const Center(
                                     child:  Padding(
                                       padding: EdgeInsets.symmetric(horizontal: 30.0,vertical: 8.0),
-                                      child: Text('Acceptance',style: TextStyle(color: Colors.white,fontSize: 13.0),),
+                                      child: Text('Pick',style: TextStyle(color: Colors.white,fontSize: 13.0),),
                                     ),
                                   ),
                                 ),
